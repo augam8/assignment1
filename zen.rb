@@ -2,8 +2,7 @@ require 'tty-box'
 require 'tty-font'
 require 'tty-prompt'
 require 'colorize'
-require 'tty-spinner'
-require 'colorized_string'
+require 'rubocop'
 
 prompt = TTY::Prompt.new
 font = TTY::Font.new(:straight)
@@ -21,7 +20,7 @@ def exit_method(massage_add_ons, massage_selection, oil_selection)
 
     save_to_file(massage_selection, oil_selection, massage_add_ons)
 
-    puts "GB" #?
+    
 
     exit
 end
@@ -51,7 +50,7 @@ end
 def save_to_file(massage_selection,oil_selection,massage_add_ons)
     #user_selection is a string 
     user_selections = ($name.to_s + "," + massage_selection + "," + oil_selection) 
-    #loops through add_ons and puts all items in massage_add_ons empty array  
+    #loops through each add_ons and puts all items in massage_add_ons empty array  
     massage_add_ons.each do |item| 
         user_selections += ("," + item)
     end
@@ -71,7 +70,7 @@ puts "To help direct you to our menu system, may I begin with your name please?"
 
 $name = gets.chomp.capitalize
 
-puts "Pleasure to have you here today #{$name.colorize(:yellow)}! Please select your preferred massage type from the following options.."
+puts "Pleasure to have you here today #{$name.colorize(:yellow)}! Please select your preferred massage type from the following options..".colorize(:magenta)
 
 
 massage_selection = prompt.select("You have chosen;", massage_therapy)
@@ -111,12 +110,12 @@ case massage_selection
 
         elsif(answer == 'Y' or answer == 'n')
             
-            puts "You have chosen no upgrades for your #{massage_selection}." 
+            puts "You have chosen no upgrades for your #{massage_selection.colorize(:magenta)}" 
 
             exit
         end
 
-        puts "Your treatment for today: #{massage_selection}. Please take a seat to our lounge area and help yourself to a complimentary tea while we get your room ready"
+        puts "Your treatment for today: #{massage_selection.colorize(:magenta)}. Please take a seat to our lounge area and help yourself to a complimentary tea while we get your room ready".colorize(:magenta)
 
     
-end # end case
+end 

@@ -79,14 +79,14 @@ case massage_therapy
 
         elsif(answer == "N")
             
-            puts "Your treatment for today is #{selected_massage} with #{selected_oil}. Please wait one moment while we print your treatment for today."
+            puts "Your treatment for today is #{selected_massage.colorize(:green)} with #{selected_oil.colorize(:yellow)}. Please wait one moment while we print your treatment for today."
 
             exit
     
         end
     
             puts print_my_selections
-            
+
     when "thai massage"
         
         puts "No oils required for #{massage_selection}"
